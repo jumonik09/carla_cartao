@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap');
+
+:root {
+  color-scheme: light;
+  --green: #203e36;
+  --cream: #faf8f2;
+  --gold: #aa8753;
+  --muted: #667063;
+  --line: #dfe3d6;
+  --ease: cubic-bezier(.2,.7,.3,1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: clamp(18px,4vw,52px);
+  color: var(--green);
+  font-family: 'DM Sans',system-ui,sans-serif;
+  background: radial-gradient(ellipse at 0% 0%,#dce1d3,transparent 60%),radial-gradient(ellipse at 100% 100%,#e5dcd0,transparent 55%),#eeeee6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+a,button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+a:focus-visible,button:focus-visible { outline: 3px solid var(--gold); outline-offset: 5px; }
+svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.5; flex-shrink: 0; }
+
+/* Moldura e retrato */
+.card {
+  width: 100%;
+  max-width: 1060px;
+  display: grid;
+  grid-template-columns: minmax(0,.92fr) minmax(0,1.08fr);
+  gap: 8px;
+  padding: 12px;
+  background: var(--cream);
+  border: 1px solid #ffffffd9;
+  border-radius: 36px;
+  box-shadow: 0 32px 90px #203e3615,0 4px 16px #203e3605;
+}
+.portrait { position: relative; min-height: 640px; overflow: hidden; border-radius: 26px; background: #74806b; }
+.portrait > img { position: absolute; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; transform: scale(1.02); transition: transform 1.2s var(--ease); }
+.portrait::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg,#142d2855,transparent 30%,#142d2824); }
+.portrait-top { position: absolute; top: 26px; left: 26px; right: 26px; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 12px; color: white; }
+.monogram { font: 36px/1 'Playfair Display',Georgia,serif; letter-spacing: -4px; }
+.monogram span { margin-left: 7px; font-size: 23px; color: #e9d6ae; letter-spacing: 0; }
+.portrait-label { padding: 10px 14px; border: 1px solid #ffffff50; border-radius: 30px; background: #203e3660; backdrop-filter: blur(10px); font-size: 9px; letter-spacing: 2px; }
+
+/* Identificação e áreas de atuação */
+.content { min-width: 0; padding: 29px 32px 18px; }
+h1 { margin: 0 0 17px; font: 500 clamp(46px,4.9vw,62px)/1.06 'Playfair Display',Georgia,serif; letter-spacing: -1.8px; }
+h1 > span:first-child { font-size: .53em; letter-spacing: -.4px; }
+.title-dot { color: var(--gold); }
+.registration { display: inline-block; margin: 0; padding: 7px 12px; border: 1px solid #dce2d2; border-radius: 30px; background: #e9ecdf; color: #50614c; font-size: 10px; font-weight: 600; letter-spacing: 1px; }
+.specialties { list-style: none; margin: 23px 0 26px; padding: 19px 20px; border: 1px solid #e4dccb; border-radius: 22px; background: linear-gradient(120deg,#f0ebdf,#faf8f1); font: 500 clamp(21px,2.2vw,25px)/1.4 'Playfair Display',Georgia,serif; }
+.specialties li { position: relative; padding-left: 15px; overflow-wrap: break-word; }
+.specialties li::before { content: ''; position: absolute; left: 0; top: .63em; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+.specialties li + li { margin-top: 7px; }
+
+/* Contatos e localização */
+.contact-actions { display: grid; gap: 12px; }
+.button { position: relative; display: flex; align-items: center; gap: 14px; min-height: 72px; padding: 16px 18px; border: 1px solid transparent; border-radius: 19px; overflow: hidden; font-size: 13px; font-weight: 600; transition: transform .3s var(--ease),background .3s,box-shadow .3s; }
+.button > span:not(.arrow):not(.click-wave) { min-width: 0; }
+.primary { background: linear-gradient(120deg,#294d41,#1d3932); color: #fff; box-shadow: 0 7px 16px #203e3614; }
+.secondary { background: #fff9; border-color: var(--line); }
+.button small { display: block; margin-top: 5px; font-size: 11px; font-weight: 400; overflow-wrap: anywhere; }
+.primary small { color: #d7e4dc; }
+.secondary small { color: var(--muted); }
+.arrow { margin-left: auto; font-size: 20px; font-weight: 400; flex-shrink: 0; transition: transform .3s var(--ease); }
+.location { display: flex; align-items: center; gap: 12px; margin: 18px 0; padding: 17px 16px; border: 1px solid var(--line); border-radius: 20px; background: #f0f1e980; transition: background .3s,transform .3s var(--ease); }
+.location-icon { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: #e5e9dc; }
+.location-copy { min-width: 0; }
+.eyebrow { font-size: 8px; font-weight: 600; letter-spacing: 1.2px; line-height: 1.6; color: var(--muted); }
+.location strong,.location small { display: block; }
+.location strong { margin: 5px 0 2px; font-size: 13px; font-weight: 500; line-height: 1.5; }
+.location small { font-size: 12px; color: var(--muted); }
+.location .arrow { color: var(--gold); }
+
+/* Tour e agenda */
+.tour { position: relative; display: flex; align-items: center; gap: 17px; padding: 20px; border: 1px solid #dbe2cf; border-radius: 22px; overflow: hidden; background: linear-gradient(120deg,#e8eddf,#f0f2e8); transition: background .3s,transform .3s var(--ease); }
+.tour::after { content: ''; position: absolute; right: -65px; top: -70px; width: 140px; height: 140px; border: 1px solid #cdd6c2; border-radius: 50%; pointer-events: none; }
+.tour-copy { min-width: 0; }
+.tour-orbit { position: relative; display: grid; place-items: center; width: 49px; height: 49px; border: 1px solid #b7c3ac; border-radius: 50%; flex-shrink: 0; }
+.tour-orbit::after { content: ''; position: absolute; inset: 9px -5px; border: 1px solid #a1af97; border-radius: 50%; transform: rotate(-25deg); }
+.tour-orbit span { padding: 3px; z-index: 1; background: #e9eedf; font-size: 13px; font-weight: 600; }
+h2 { margin: 0; font: 500 22px/1.25 'Playfair Display',Georgia,serif; }
+.tour-status { display: block; margin-top: 6px; font-size: 10px; color: #586c4d; }
+footer { display: flex; justify-content: flex-end; margin-top: 16px; }
+footer button { position: relative; overflow: hidden; min-height: 44px; padding: 11px 18px; border: 1px solid #dce2d3; border-radius: 30px; background: transparent; color: var(--green); font-size: 11px; transition: background .3s; }
+footer button > span { margin-left: 6px; color: var(--gold); }
+.feedback { margin: 10px 0 0; color: #50614c; font-size: 11px; line-height: 1.6; text-align: right; }
+.feedback:empty { display: none; }
+
+/* Movimento opcional */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease,transform .7s var(--ease); transition-delay: var(--reveal-delay,0ms); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.click-wave { position: absolute; border-radius: 50%; pointer-events: none; background: currentColor; opacity: .12; transform: scale(0); animation: click-wave .65s ease-out forwards; }
+@keyframes click-wave { to { transform: scale(1); opacity: 0; } }
+@media (hover: hover) and (pointer: fine) {
+  .portrait:hover > img { transform: scale(1.055); }
+  .button:hover { transform: translateY(-2px); box-shadow: 0 10px 22px #203e3615; }
+  .primary:hover { background: #2d5146; }
+  .secondary:hover,footer button:hover { background: #edf0e4; }
+  .location:hover,.tour-link:hover { background: #e6ebdc; transform: translateY(-2px); }
+  .button:hover .arrow,.location:hover .arrow { transform: translate(2px,-2px); }
+}
+
+/* Laptop compacto, tablet e celular */
+@media (min-width: 701px) and (max-width: 900px) {
+  body { padding: 24px 18px; }
+  .card { grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 0; }
+  .content { padding: 27px 22px 16px; }
+  .portrait-top { left: 20px; right: 20px; flex-wrap: wrap; }
+  .portrait-label { font-size: 8px; }
+  h1 { font-size: 50px; }
+  .specialties { padding: 18px 15px; font-size: 22px; }
+}
+@media (max-width: 700px) {
+  body { padding: 14px; }
+  .card { max-width: 460px; grid-template-columns: minmax(0,1fr); gap: 0; padding: 9px; border-radius: 29px; }
+  .portrait { height: clamp(280px,72vw,340px); min-height: 0; border-radius: 22px; }
+  .portrait > img { object-position: 50% 41%; }
+  .portrait-top { top: 20px; left: 22px; right: 22px; }
+  .content { padding: 28px 18px 16px; }
+  h1 { font-size: clamp(42px,10vw,51px); }
+  .specialties { padding: 18px 16px; margin: 21px 0 24px; border-radius: 20px; font-size: clamp(21px,5.5vw,24px); }
+  .button { padding: 16px; border-radius: 18px; }
+  .location { padding: 16px 12px; border-radius: 18px; }
+  .tour { padding: 19px 16px; border-radius: 20px; }
+}
+@media (max-width: 360px) {
+  body { padding: 9px; }
+  .content { padding-left: 12px; padding-right: 12px; }
+  .button { gap: 10px; padding: 14px 12px; font-size: 12px; }
+  .location { gap: 9px; }
+  .location strong { font-size: 12px; }
+  .eyebrow { font-size: 7px; letter-spacing: .7px; }
+  .specialties { padding: 16px 12px; font-size: 20px; }
+  h2 { font-size: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,*::before,*::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+  .click-wave { display: none; }
+}
+
+/* Tour incorporado: visível no próprio cartão, independente de JavaScript. */
+.card .tour-embed { margin: 18px 0 0; overflow: hidden; border: 1px solid #dbe2cf; border-radius: 22px; background: #e8eddf; }
+.card .tour-heading { padding: 18px 20px; }
+.card .tour-heading h2 { margin: 0; color: #203e36; font: 500 22px/1.3 'Playfair Display',Georgia,serif; }
+.card .tour-heading > span { display: block; margin-top: 5px; color: #586c4d; font-size: 11px; }
+.card .tour-frame { width: calc(100% - 24px); margin: 0 12px 12px; aspect-ratio: 4 / 3; min-height: 280px; border-radius: 20px; overflow: hidden; isolation: isolate; clip-path: inset(0 round 20px); background: #203e36; }
+.card .tour-frame iframe { display: block; width: 100%; height: 100%; min-height: 280px; margin: 0; padding: 0; border: 0; border-radius: inherit; max-width: none; }
+@media (max-width: 700px) {
+  .card .tour-embed { border-radius: 20px; }
+  .card .tour-heading { padding: 16px; }
+}
